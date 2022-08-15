@@ -1,0 +1,6 @@
+# action.yml
+name: Tag and Release
+description: Tags the current version and creates a new release
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

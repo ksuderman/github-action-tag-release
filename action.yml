@@ -1,6 +1,24 @@
 # action.yml
 name: Tag and Release
 description: Tags the current version and creates a new release
+inputs:
+  file:
+    description: path to the file containing the version number. Ignored if `tag` is specified.
+    default: VERSION
+  parser:
+    description: one of awk or cat that will be used to extract the version number. Ignored if `tag` is specified
+    default: cat
+  draft:
+    description: set to `true` to create a draft release
+    default: false
+  tag:
+    description: the tag name to use. Overrides `file` and `parser`
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.file }}
+    - ${{ inputs.parser }}
+    - $${ inputs.draft }}
+    - ${{ inputs.tag }}

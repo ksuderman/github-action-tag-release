@@ -9,6 +9,7 @@ else
   echo "No version file found"
   exit 1
 fi
+git config --global --add safe.directory /github/workspace
 git config user.email $(git --no-pager log --format=format:'%ae' -n 1)
 git config user.name $(git --no-pager log --format=format:'%an' -n 1)
 git tag -a $version -m "Automatic release of v$version"

@@ -25,4 +25,3 @@ git config user.name $(git --no-pager log --format=format:'%an' -n 1)
 git tag -a -m "Automatic release of $tag_name" $tag_name
 git push origin $tag_name
 gh release create $tag_name $flags
-''

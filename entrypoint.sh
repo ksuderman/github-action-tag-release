@@ -13,6 +13,7 @@ else
     version=$(cat $file)
   fi
 fi
+tag_name"v$version"
 
 flags="--generate-notes"
 if [[ $draft == 'true' ]] ; then
@@ -21,6 +22,7 @@ fi
 git config --global --add safe.directory /github/workspace
 git config user.email $(git --no-pager log --format=format:'%ae' -n 1)
 git config user.name $(git --no-pager log --format=format:'%an' -n 1)
-git tag -a -m "Automatic release of v$version" $version
-git push origin $version
-gh release create $version $flags
+git tag -a -m "Automatic release of $tag_name" $tag_name
+git push origin $tag_name
+gh release create $tag_name $flags
+''

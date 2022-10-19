@@ -5,12 +5,15 @@ inputs:
   file:
     description: path to the file containing the version number. Ignored if `tag` is specified.
     default: VERSION
+    required: true
   parser:
     description: one of awk or cat that will be used to extract the version number. Ignored if `tag` is specified
     default: cat
+    required: true
   draft:
     description: set to `true` to create a draft release
     default: false
+    required: true
   tag:
     description: the tag name to use. Overrides `file` and `parser`
     required: false
